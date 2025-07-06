@@ -153,12 +153,60 @@ void RtNeuralGeneric::applyModel(DynamicModel* model, float* out, uint32_t n_sam
 #if AIDADSP_CONDITIONED_MODELS
     LinearValueSmoother& param1Coeff = model->param1Coeff;
     LinearValueSmoother& param2Coeff = model->param2Coeff;
+#if AIDADSP_PARAMS >= 3
+    LinearValueSmoother& param3Coeff = model->param3Coeff;
+#if AIDADSP_PARAMS >= 4
+    LinearValueSmoother& param4Coeff = model->param4Coeff;
+#if AIDADSP_PARAMS >= 5
+    LinearValueSmoother& param5Coeff = model->param5Coeff;
+#if AIDADSP_PARAMS >= 6
+    LinearValueSmoother& param6Coeff = model->param6Coeff;
+#if AIDADSP_PARAMS >= 7
+    LinearValueSmoother& param7Coeff = model->param7Coeff;
+#if AIDADSP_PARAMS >= 8
+    LinearValueSmoother& param8Coeff = model->param8Coeff;
+#if AIDADSP_PARAMS >= 9
+    LinearValueSmoother& param9Coeff = model->param9Coeff;
+#if AIDADSP_PARAMS >= 10
+    LinearValueSmoother& param10Coeff = model->param10Coeff;
+#endif
+#endif
+#endif
+#endif
+#endif
+#endif
+#endif
+#endif
 #endif
 
     std::visit (
         [input_skip, &out, n_samples, input_gain, output_gain
 #if AIDADSP_CONDITIONED_MODELS
         , &param1Coeff, &param2Coeff
+#if AIDADSP_PARAMS >= 3
+        , &param3Coeff
+#if AIDADSP_PARAMS >= 4
+        , &param4Coeff
+#if AIDADSP_PARAMS >= 5
+        , &param5Coeff
+#if AIDADSP_PARAMS >= 6
+        , &param6Coeff
+#if AIDADSP_PARAMS >= 7
+        , &param7Coeff
+#if AIDADSP_PARAMS >= 8
+        , &param8Coeff
+#if AIDADSP_PARAMS >= 9
+        , &param9Coeff
+#if AIDADSP_PARAMS >= 10
+        , &param10Coeff
+#endif
+#endif
+#endif
+#endif
+#endif
+#endif
+#endif
+#endif
 #endif
         ] (auto&& custom_model)
         {
@@ -229,6 +277,286 @@ void RtNeuralGeneric::applyModel(DynamicModel* model, float* out, uint32_t n_sam
                         inArray2[1] = param1Coeff.next();
                         inArray2[2] = param2Coeff.next();
                         out[i] = custom_model.forward (inArray2);
+                        out[i] *= output_gain;
+                    }
+                }
+            }
+            else if constexpr (ModelType::input_size == 4)
+            {
+                float inArray3 alignas(RTNEURAL_DEFAULT_ALIGNMENT)[4] = { 0.0, 0.0, 0.0, 0.0 };
+                if (input_skip)
+                {
+                    for (uint32_t i=0; i<n_samples; ++i) {
+                        out[i] *= input_gain;
+                        inArray3[0] = out[i];
+                        inArray3[1] = param1Coeff.next();
+                        inArray3[2] = param2Coeff.next();
+                        inArray3[3] = param3Coeff.next();
+                        out[i] += custom_model.forward (inArray3);
+                        out[i] *= output_gain;
+                    }
+                }
+                else
+                {
+                    for (uint32_t i=0; i<n_samples; ++i) {
+                        out[i] *= input_gain;
+                        inArray3[0] = out[i];
+                        inArray3[1] = param1Coeff.next();
+                        inArray3[2] = param2Coeff.next();
+                        inArray3[3] = param3Coeff.next();
+                        out[i] = custom_model.forward (inArray3);
+                        out[i] *= output_gain;
+                    }
+                }
+            }
+            else if constexpr (ModelType::input_size == 5)
+            {
+                float inArray4 alignas(RTNEURAL_DEFAULT_ALIGNMENT)[5] = { 0.0, 0.0, 0.0, 0.0, 0.0 };
+                if (input_skip)
+                {
+                    for (uint32_t i=0; i<n_samples; ++i) {
+                        out[i] *= input_gain;
+                        inArray4[0] = out[i];
+                        inArray4[1] = param1Coeff.next();
+                        inArray4[2] = param2Coeff.next();
+                        inArray4[3] = param3Coeff.next();
+                        inArray4[4] = param4Coeff.next();
+                        out[i] += custom_model.forward (inArray4);
+                        out[i] *= output_gain;
+                    }
+                }
+                else
+                {
+                    for (uint32_t i=0; i<n_samples; ++i) {
+                        out[i] *= input_gain;
+                        inArray4[0] = out[i];
+                        inArray4[1] = param1Coeff.next();
+                        inArray4[2] = param2Coeff.next();
+                        inArray4[3] = param3Coeff.next();
+                        inArray4[4] = param4Coeff.next();
+                        out[i] = custom_model.forward (inArray4);
+                        out[i] *= output_gain;
+                    }
+                }
+            }
+            else if constexpr (ModelType::input_size == 6)
+            {
+                float inArray5 alignas(RTNEURAL_DEFAULT_ALIGNMENT)[6] = { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 };
+                if (input_skip)
+                {
+                    for (uint32_t i=0; i<n_samples; ++i) {
+                        out[i] *= input_gain;
+                        inArray5[0] = out[i];
+                        inArray5[1] = param1Coeff.next();
+                        inArray5[2] = param2Coeff.next();
+                        inArray5[3] = param3Coeff.next();
+                        inArray5[4] = param4Coeff.next();
+                        inArray5[5] = param5Coeff.next();
+                        out[i] += custom_model.forward (inArray5);
+                        out[i] *= output_gain;
+                    }
+                }
+                else
+                {
+                    for (uint32_t i=0; i<n_samples; ++i) {
+                        out[i] *= input_gain;
+                        inArray5[0] = out[i];
+                        inArray5[1] = param1Coeff.next();
+                        inArray5[2] = param2Coeff.next();
+                        inArray5[3] = param3Coeff.next();
+                        inArray5[4] = param4Coeff.next();
+                        inArray5[5] = param5Coeff.next();
+                        out[i] = custom_model.forward (inArray5);
+                        out[i] *= output_gain;
+                    }
+                }
+            }
+            else if constexpr (ModelType::input_size == 7)
+            {
+                float inArray6 alignas(RTNEURAL_DEFAULT_ALIGNMENT)[7] = { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 };
+                if (input_skip)
+                {
+                    for (uint32_t i=0; i<n_samples; ++i) {
+                        out[i] *= input_gain;
+                        inArray6[0] = out[i];
+                        inArray6[1] = param1Coeff.next();
+                        inArray6[2] = param2Coeff.next();
+                        inArray6[3] = param3Coeff.next();
+                        inArray6[4] = param4Coeff.next();
+                        inArray6[5] = param5Coeff.next();
+                        inArray6[6] = param6Coeff.next();
+                        out[i] += custom_model.forward (inArray6);
+                        out[i] *= output_gain;
+                    }
+                }
+                else
+                {
+                    for (uint32_t i=0; i<n_samples; ++i) {
+                        out[i] *= input_gain;
+                        inArray6[0] = out[i];
+                        inArray6[1] = param1Coeff.next();
+                        inArray6[2] = param2Coeff.next();
+                        inArray6[3] = param3Coeff.next();
+                        inArray6[4] = param4Coeff.next();
+                        inArray6[5] = param5Coeff.next();
+                        inArray6[6] = param6Coeff.next();
+                        out[i] = custom_model.forward (inArray6);
+                        out[i] *= output_gain;
+                    }
+                }
+            }
+            else if constexpr (ModelType::input_size == 8)
+            {
+                float inArray7 alignas(RTNEURAL_DEFAULT_ALIGNMENT)[8] = { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 };
+                if (input_skip)
+                {
+                    for (uint32_t i=0; i<n_samples; ++i) {
+                        out[i] *= input_gain;
+                        inArray7[0] = out[i];
+                        inArray7[1] = param1Coeff.next();
+                        inArray7[2] = param2Coeff.next();
+                        inArray7[3] = param3Coeff.next();
+                        inArray7[4] = param4Coeff.next();
+                        inArray7[5] = param5Coeff.next();
+                        inArray7[6] = param6Coeff.next();
+                        inArray7[7] = param7Coeff.next();
+                        out[i] += custom_model.forward (inArray7);
+                        out[i] *= output_gain;
+                    }
+                }
+                else
+                {
+                    for (uint32_t i=0; i<n_samples; ++i) {
+                        out[i] *= input_gain;
+                        inArray7[0] = out[i];
+                        inArray7[1] = param1Coeff.next();
+                        inArray7[2] = param2Coeff.next();
+                        inArray7[3] = param3Coeff.next();
+                        inArray7[4] = param4Coeff.next();
+                        inArray7[5] = param5Coeff.next();
+                        inArray7[6] = param6Coeff.next();
+                        inArray7[7] = param7Coeff.next();
+                        out[i] = custom_model.forward (inArray7);
+                        out[i] *= output_gain;
+                    }
+                }
+            }
+            else if constexpr (ModelType::input_size == 9)
+            {
+                float inArray8 alignas(RTNEURAL_DEFAULT_ALIGNMENT)[9] = { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 };
+                if (input_skip)
+                {
+                    for (uint32_t i=0; i<n_samples; ++i) {
+                        out[i] *= input_gain;
+                        inArray8[0] = out[i];
+                        inArray8[1] = param1Coeff.next();
+                        inArray8[2] = param2Coeff.next();
+                        inArray8[3] = param3Coeff.next();
+                        inArray8[4] = param4Coeff.next();
+                        inArray8[5] = param5Coeff.next();
+                        inArray8[6] = param6Coeff.next();
+                        inArray8[7] = param7Coeff.next();
+                        inArray8[8] = param8Coeff.next();
+                        out[i] += custom_model.forward (inArray8);
+                        out[i] *= output_gain;
+                    }
+                }
+                else
+                {
+                    for (uint32_t i=0; i<n_samples; ++i) {
+                        out[i] *= input_gain;
+                        inArray8[0] = out[i];
+                        inArray8[1] = param1Coeff.next();
+                        inArray8[2] = param2Coeff.next();
+                        inArray8[3] = param3Coeff.next();
+                        inArray8[4] = param4Coeff.next();
+                        inArray8[5] = param5Coeff.next();
+                        inArray8[6] = param6Coeff.next();
+                        inArray8[7] = param7Coeff.next();
+                        inArray8[8] = param8Coeff.next();
+                        out[i] = custom_model.forward (inArray8);
+                        out[i] *= output_gain;
+                    }
+                }
+            }
+            else if constexpr (ModelType::input_size == 10)
+            {
+                float inArray9 alignas(RTNEURAL_DEFAULT_ALIGNMENT)[10] = { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 };
+                if (input_skip)
+                {
+                    for (uint32_t i=0; i<n_samples; ++i) {
+                        out[i] *= input_gain;
+                        inArray9[0] = out[i];
+                        inArray9[1] = param1Coeff.next();
+                        inArray9[2] = param2Coeff.next();
+                        inArray9[3] = param3Coeff.next();
+                        inArray9[4] = param4Coeff.next();
+                        inArray9[5] = param5Coeff.next();
+                        inArray9[6] = param6Coeff.next();
+                        inArray9[7] = param7Coeff.next();
+                        inArray9[8] = param8Coeff.next();
+                        inArray9[9] = param9Coeff.next();
+                        out[i] += custom_model.forward (inArray9);
+                        out[i] *= output_gain;
+                    }
+                }
+                else
+                {
+                    for (uint32_t i=0; i<n_samples; ++i) {
+                        out[i] *= input_gain;
+                        inArray9[0] = out[i];
+                        inArray9[1] = param1Coeff.next();
+                        inArray9[2] = param2Coeff.next();
+                        inArray9[3] = param3Coeff.next();
+                        inArray9[4] = param4Coeff.next();
+                        inArray9[5] = param5Coeff.next();
+                        inArray9[6] = param6Coeff.next();
+                        inArray9[7] = param7Coeff.next();
+                        inArray9[8] = param8Coeff.next();
+                        inArray9[9] = param9Coeff.next();
+                        out[i] = custom_model.forward (inArray9);
+                        out[i] *= output_gain;
+                    }
+                }
+            }
+            else if constexpr (ModelType::input_size == 11)
+            {
+                float inArray10 alignas(RTNEURAL_DEFAULT_ALIGNMENT)[11] = { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 };
+                if (input_skip)
+                {
+                    for (uint32_t i=0; i<n_samples; ++i) {
+                        out[i] *= input_gain;
+                        inArray10[0] = out[i];
+                        inArray10[1] = param1Coeff.next();
+                        inArray10[2] = param2Coeff.next();
+                        inArray10[3] = param3Coeff.next();
+                        inArray10[4] = param4Coeff.next();
+                        inArray10[5] = param5Coeff.next();
+                        inArray10[6] = param6Coeff.next();
+                        inArray10[7] = param7Coeff.next();
+                        inArray10[8] = param8Coeff.next();
+                        inArray10[9] = param9Coeff.next();
+                        inArray10[10] = param10Coeff.next();
+                        out[i] += custom_model.forward (inArray10);
+                        out[i] *= output_gain;
+                    }
+                }
+                else
+                {
+                    for (uint32_t i=0; i<n_samples; ++i) {
+                        out[i] *= input_gain;
+                        inArray10[0] = out[i];
+                        inArray10[1] = param1Coeff.next();
+                        inArray10[2] = param2Coeff.next();
+                        inArray10[3] = param3Coeff.next();
+                        inArray10[4] = param4Coeff.next();
+                        inArray10[5] = param5Coeff.next();
+                        inArray10[6] = param6Coeff.next();
+                        inArray10[7] = param7Coeff.next();
+                        inArray10[8] = param8Coeff.next();
+                        inArray10[9] = param9Coeff.next();
+                        inArray10[10] = param10Coeff.next();
+                        out[i] = custom_model.forward (inArray10);
                         out[i] *= output_gain;
                     }
                 }
@@ -396,6 +724,46 @@ void RtNeuralGeneric::connect_port(LV2_Handle instance, uint32_t port, void *dat
         case PARAM2:
             self->param2 = (float*) data;
             break;
+#if AIDADSP_PARAMS >= 3
+        case PARAM3:
+            self->param3 = (float*) data;
+            break;
+#if AIDADSP_PARAMS >= 4
+        case PARAM4:
+            self->param4 = (float*) data;
+            break;
+#if AIDADSP_PARAMS >= 5
+        case PARAM5:
+            self->param5 = (float*) data;
+            break;
+#if AIDADSP_PARAMS >= 6
+        case PARAM6:
+            self->param6 = (float*) data;
+            break;
+#if AIDADSP_PARAMS >= 7
+        case PARAM7:
+            self->param7 = (float*) data;
+            break;
+#if AIDADSP_PARAMS >= 8
+        case PARAM8:
+            self->param8 = (float*) data;
+            break;
+#if AIDADSP_PARAMS >= 9
+        case PARAM9:
+            self->param9 = (float*) data;
+            break;
+#if AIDADSP_PARAMS >= 10
+        case PARAM10:
+            self->param10 = (float*) data;
+            break;
+#endif
+#endif
+#endif
+#endif
+#endif
+#endif
+#endif
+#endif
 #endif
 #endif
         case MASTER:
@@ -496,9 +864,33 @@ void RtNeuralGeneric::run(LV2_Handle instance, uint32_t n_samples)
 #if AIDADSP_PARAMS == 1
     const float param1 = *self->param1;
     const float param2 = 0.f;
-#elif AIDADSP_PARAMS == 2
+#elif AIDADSP_PARAMS >= 2 // Now up to 10
     const float param1 = *self->param1;
     const float param2 = *self->param2;
+#if AIDADSP_PARAMS >= 3
+    const float param3 = *self->param3;
+#if AIDADSP_PARAMS >= 4
+    const float param4 = *self->param4;
+#if AIDADSP_PARAMS >= 5
+    const float param5 = *self->param5;
+#if AIDADSP_PARAMS >= 6
+    const float param6 = *self->param6;
+#if AIDADSP_PARAMS >= 7
+    const float param7 = *self->param7;
+#if AIDADSP_PARAMS >= 8
+    const float param8 = *self->param8;
+#if AIDADSP_PARAMS >= 9
+    const float param9 = *self->param9;
+#if AIDADSP_PARAMS >= 10
+    const float param10 = *self->param10;
+#endif
+#endif
+#endif
+#endif
+#endif
+#endif
+#endif
+#endif
 #endif
 #ifdef AIDADSP_CHANNELS
     std::vector<float> ctrls(8);
@@ -633,10 +1025,58 @@ void RtNeuralGeneric::run(LV2_Handle instance, uint32_t n_samples)
 #if AIDADSP_CONDITIONED_MODELS
             self->model->param1Coeff.setTargetValue(param1);
             self->model->param2Coeff.setTargetValue(param2);
+#if AIDADSP_PARAMS >= 3
+            self->model->param3Coeff.setTargetValue(param3);
+#if AIDADSP_PARAMS >= 4
+            self->model->param4Coeff.setTargetValue(param4);
+#if AIDADSP_PARAMS >= 5
+            self->model->param5Coeff.setTargetValue(param5);
+#if AIDADSP_PARAMS >= 6
+            self->model->param6Coeff.setTargetValue(param6);
+#if AIDADSP_PARAMS >= 7
+            self->model->param7Coeff.setTargetValue(param7);
+#if AIDADSP_PARAMS >= 8
+            self->model->param8Coeff.setTargetValue(param8);
+#if AIDADSP_PARAMS >= 9
+            self->model->param9Coeff.setTargetValue(param9);
+#if AIDADSP_PARAMS >= 10
+            self->model->param10Coeff.setTargetValue(param10);
+#endif
+#endif
+#endif
+#endif
+#endif
+#endif
+#endif
+#endif
             if (self->model->paramFirstRun) {
                 self->model->paramFirstRun = false;
                 self->model->param1Coeff.clearToTargetValue();
                 self->model->param2Coeff.clearToTargetValue();
+#if AIDADSP_PARAMS >= 3
+                self->model->param3Coeff.clearToTargetValue();
+#if AIDADSP_PARAMS >= 4
+                self->model->param4Coeff.clearToTargetValue();
+#if AIDADSP_PARAMS >= 5
+                self->model->param5Coeff.clearToTargetValue();
+#if AIDADSP_PARAMS >= 6
+                self->model->param6Coeff.clearToTargetValue();
+#if AIDADSP_PARAMS >= 7
+                self->model->param7Coeff.clearToTargetValue();
+#if AIDADSP_PARAMS >= 8
+                self->model->param8Coeff.clearToTargetValue();
+#if AIDADSP_PARAMS >= 9
+                self->model->param9Coeff.clearToTargetValue();
+#if AIDADSP_PARAMS >= 10
+                self->model->param10Coeff.clearToTargetValue();
+#endif
+#endif
+#endif
+#endif
+#endif
+#endif
+#endif
+#endif
             }
 #endif
             applyModel(self->model, self->out_1, n_samples);
@@ -814,6 +1254,31 @@ LV2_Worker_Status RtNeuralGeneric::work(LV2_Handle instance,
     const WorkerMessage* msg = (const WorkerMessage*)data;
     float param1 = 0.0f;
     float param2 = 0.0f;
+#if AIDADSP_PARAMS >= 3
+    float param3 = 0.0f;
+#if AIDADSP_PARAMS >= 4
+    float param4 = 0.0f;
+#if AIDADSP_PARAMS >= 5
+    float param5 = 0.0f;
+#if AIDADSP_PARAMS >= 6
+    float param6 = 0.0f;
+#if AIDADSP_PARAMS >= 7
+    float param7 = 0.0f;
+#if AIDADSP_PARAMS >= 8
+    float param8 = 0.0f;
+#if AIDADSP_PARAMS >= 9
+    float param9 = 0.0f;
+#if AIDADSP_PARAMS >= 10
+    float param10 = 0.0f;
+#endif
+#endif
+#endif
+#endif
+#endif
+#endif
+#endif
+#endif
+#endif
 
     switch (msg->type)
     {
@@ -822,12 +1287,37 @@ LV2_Worker_Status RtNeuralGeneric::work(LV2_Handle instance,
         if (self->model != nullptr) {
             param1 = self->model->param1Coeff.getTargetValue();
             param2 = self->model->param2Coeff.getTargetValue();
+#if AIDADSP_PARAMS >= 3
+            param3 = self->model->param3Coeff.getTargetValue();
+#if AIDADSP_PARAMS >= 4
+            param4 = self->model->param4Coeff.getTargetValue();
+#if AIDADSP_PARAMS >= 5
+            param5 = self->model->param5Coeff.getTargetValue();
+#if AIDADSP_PARAMS >= 6
+            param6 = self->model->param6Coeff.getTargetValue();
+#if AIDADSP_PARAMS >= 7
+            param7 = self->model->param7Coeff.getTargetValue();
+#if AIDADSP_PARAMS >= 8
+            param8 = self->model->param8Coeff.getTargetValue();
+#if AIDADSP_PARAMS >= 9
+            param9 = self->model->param9Coeff.getTargetValue();
+#if AIDADSP_PARAMS >= 10
+            param10 = self->model->param10Coeff.getTargetValue();
+#endif
+#endif
+#endif
+#endif
+#endif
+#endif
+#endif
+#endif
+#endif
         }
 #endif
 #if AIDADSP_MODEL_LOADER
-        if (DynamicModel* newmodel = RtNeuralGeneric::loadModelFromPath(&self->logger, ((const WorkerLoadMessage*)data)->path, &self->last_input_size, param1, param2))
+        if (DynamicModel* newmodel = RtNeuralGeneric::loadModelFromPath(&self->logger, ((const WorkerLoadMessage*)data)->path, &self->last_input_size, param1, param2, param3, param4, param5, param6, param7, param8, param9, param10))
 #else
-        if (DynamicModel* newmodel = RtNeuralGeneric::loadModelFromIndex(&self->logger, ((const WorkerLoadMessage*)data)->modelIndex, &self->last_input_size, param1, param2))
+        if (DynamicModel* newmodel = RtNeuralGeneric::loadModelFromIndex(&self->logger, ((const WorkerLoadMessage*)data)->modelIndex, &self->last_input_size, param1, param2, param3, param4, param5, param6, param7, param8, param9, param10))
 #endif
         {
             WorkerApplyMessage reply = { kWorkerApply, newmodel };
@@ -960,7 +1450,7 @@ bool RtNeuralGeneric::testModel(LV2_Log_Logger* logger, DynamicModel *model, con
 /**
  * This function loads a pre-trained neural model from a json file
 */
-DynamicModel* RtNeuralGeneric::loadModelFromPath(LV2_Log_Logger* logger, const char* path, int* input_size_ptr, const float old_param1, const float old_param2)
+DynamicModel* RtNeuralGeneric::loadModelFromPath(LV2_Log_Logger* logger, const char* path, int* input_size_ptr, const float old_param1, const float old_param2, const float old_param3, const float old_param4, const float old_param5, const float old_param6, const float old_param7, const float old_param8, const float old_param9, const float old_param10)
 {
     int input_skip;
     int input_size;
@@ -1058,6 +1548,55 @@ DynamicModel* RtNeuralGeneric::loadModelFromPath(LV2_Log_Logger* logger, const c
     model->param2Coeff.setTimeConstant(0.1f);
     model->param2Coeff.setTargetValue(old_param2);
     model->param2Coeff.clearToTargetValue();
+#if AIDADSP_PARAMS >= 3
+    model->param3Coeff.setSampleRate(model_samplerate);
+    model->param3Coeff.setTimeConstant(0.1f);
+    model->param3Coeff.setTargetValue(old_param3);
+    model->param3Coeff.clearToTargetValue();
+#if AIDADSP_PARAMS >= 4
+    model->param4Coeff.setSampleRate(model_samplerate);
+    model->param4Coeff.setTimeConstant(0.1f);
+    model->param4Coeff.setTargetValue(old_param4);
+    model->param4Coeff.clearToTargetValue();
+#if AIDADSP_PARAMS >= 5
+    model->param5Coeff.setSampleRate(model_samplerate);
+    model->param5Coeff.setTimeConstant(0.1f);
+    model->param5Coeff.setTargetValue(old_param5);
+    model->param5Coeff.clearToTargetValue();
+#if AIDADSP_PARAMS >= 6
+    model->param6Coeff.setSampleRate(model_samplerate);
+    model->param6Coeff.setTimeConstant(0.1f);
+    model->param6Coeff.setTargetValue(old_param6);
+    model->param6Coeff.clearToTargetValue();
+#if AIDADSP_PARAMS >= 7
+    model->param7Coeff.setSampleRate(model_samplerate);
+    model->param7Coeff.setTimeConstant(0.1f);
+    model->param7Coeff.setTargetValue(old_param7);
+    model->param7Coeff.clearToTargetValue();
+#if AIDADSP_PARAMS >= 8
+    model->param8Coeff.setSampleRate(model_samplerate);
+    model->param8Coeff.setTimeConstant(0.1f);
+    model->param8Coeff.setTargetValue(old_param8);
+    model->param8Coeff.clearToTargetValue();
+#if AIDADSP_PARAMS >= 9
+    model->param9Coeff.setSampleRate(model_samplerate);
+    model->param9Coeff.setTimeConstant(0.1f);
+    model->param9Coeff.setTargetValue(old_param9);
+    model->param9Coeff.clearToTargetValue();
+#if AIDADSP_PARAMS >= 10
+    model->param10Coeff.setSampleRate(model_samplerate);
+    model->param10Coeff.setTimeConstant(0.1f);
+    model->param10Coeff.setTargetValue(old_param10);
+    model->param10Coeff.clearToTargetValue();
+#endif
+#endif
+#endif
+#endif
+#endif
+#endif
+#endif
+#endif
+#endif
     model->paramFirstRun = true;
 #endif
 

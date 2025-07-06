@@ -91,6 +91,78 @@ lv2:port
 ],
 [
     a lv2:ControlPort, lv2:InputPort;
+    lv2:index 25;
+    lv2:symbol "PARAM3";
+    lv2:name "PARAM3";
+    lv2:default 0;
+    lv2:minimum 0;
+    lv2:maximum 1.0;
+],
+[
+    a lv2:ControlPort, lv2:InputPort;
+    lv2:index 26;
+    lv2:symbol "PARAM4";
+    lv2:name "PARAM4";
+    lv2:default 0;
+    lv2:minimum 0;
+    lv2:maximum 1.0;
+],
+[
+    a lv2:ControlPort, lv2:InputPort;
+    lv2:index 27;
+    lv2:symbol "PARAM5";
+    lv2:name "PARAM5";
+    lv2:default 0;
+    lv2:minimum 0;
+    lv2:maximum 1.0;
+],
+[
+    a lv2:ControlPort, lv2:InputPort;
+    lv2:index 28;
+    lv2:symbol "PARAM6";
+    lv2:name "PARAM6";
+    lv2:default 0;
+    lv2:minimum 0;
+    lv2:maximum 1.0;
+],
+[
+    a lv2:ControlPort, lv2:InputPort;
+    lv2:index 29;
+    lv2:symbol "PARAM7";
+    lv2:name "PARAM7";
+    lv2:default 0;
+    lv2:minimum 0;
+    lv2:maximum 1.0;
+],
+[
+    a lv2:ControlPort, lv2:InputPort;
+    lv2:index 30;
+    lv2:symbol "PARAM8";
+    lv2:name "PARAM8";
+    lv2:default 0;
+    lv2:minimum 0;
+    lv2:maximum 1.0;
+],
+[
+    a lv2:ControlPort, lv2:InputPort;
+    lv2:index 31;
+    lv2:symbol "PARAM9";
+    lv2:name "PARAM9";
+    lv2:default 0;
+    lv2:minimum 0;
+    lv2:maximum 1.0;
+],
+[
+    a lv2:ControlPort, lv2:InputPort;
+    lv2:index 32;
+    lv2:symbol "PARAM10";
+    lv2:name "PARAM10";
+    lv2:default 0;
+    lv2:minimum 0;
+    lv2:maximum 1.0;
+],
+[
+    a lv2:ControlPort, lv2:InputPort;
     lv2:index 4;
     lv2:symbol "ANTIALIASING";
     lv2:name "ANTIALIASING";
@@ -293,13 +365,21 @@ lv2:port
     lv2:name "Model Input Size";
     lv2:default 0;
     lv2:minimum 0;
-    lv2:maximum 3;
+    lv2:maximum 11;
     lv2:portProperty lv2:integer;
     lv2:portProperty lv2:enumeration;
     lv2:scalePoint [rdfs:label "ERROR"; rdf:value 0];
     lv2:scalePoint [rdfs:label "SNAPSHOT"; rdf:value 1];
     lv2:scalePoint [rdfs:label "WITH 1 PARAM"; rdf:value 2];
     lv2:scalePoint [rdfs:label "WITH 2 PARAMS"; rdf:value 3];
+    lv2:scalePoint [rdfs:label "WITH 3 PARAMS"; rdf:value 4];
+    lv2:scalePoint [rdfs:label "WITH 4 PARAMS"; rdf:value 5];
+    lv2:scalePoint [rdfs:label "WITH 5 PARAMS"; rdf:value 6];
+    lv2:scalePoint [rdfs:label "WITH 6 PARAMS"; rdf:value 7];
+    lv2:scalePoint [rdfs:label "WITH 7 PARAMS"; rdf:value 8];
+    lv2:scalePoint [rdfs:label "WITH 8 PARAMS"; rdf:value 9];
+    lv2:scalePoint [rdfs:label "WITH 9 PARAMS"; rdf:value 10];
+    lv2:scalePoint [rdfs:label "WITH 10 PARAMS"; rdf:value 11];
 ],
 [
     a lv2:ControlPort, lv2:InputPort;

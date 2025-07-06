@@ -76,7 +76,7 @@
     #define AIDADSP_PARAMS 0
     #undef AIDADSP_CHANNELS
 #else
-    #define AIDADSP_PARAMS 2
+    #define AIDADSP_PARAMS 10
 #endif
 
 /**********************************************************************************************************************************************************/
@@ -94,6 +94,30 @@ typedef enum {
     PARAM1,
 #if AIDADSP_PARAMS >= 2
     PARAM2,
+#if AIDADSP_PARAMS >= 3
+    PARAM3,
+#if AIDADSP_PARAMS >= 4
+    PARAM4,
+#if AIDADSP_PARAMS >= 5
+    PARAM5,
+#if AIDADSP_PARAMS >= 6
+    PARAM6,
+#if AIDADSP_PARAMS >= 7
+    PARAM7,
+#if AIDADSP_PARAMS >= 8
+    PARAM8,
+#if AIDADSP_PARAMS >= 9
+    PARAM9,
+#if AIDADSP_PARAMS >= 10
+    PARAM10,
+#endif
+#endif
+#endif
+#endif
+#endif
+#endif
+#endif
+#endif
 #endif
 #endif
     EQ_BYPASS, EQ_POS, BASS, BFREQ, MID, MFREQ, MIDQ, MTYPE, TREBLE, TFREQ, DEPTH, PRESENCE,
@@ -124,6 +148,14 @@ struct DynamicModel {
 #if AIDADSP_CONDITIONED_MODELS
     LinearValueSmoother param1Coeff;
     LinearValueSmoother param2Coeff;
+    LinearValueSmoother param3Coeff;
+    LinearValueSmoother param4Coeff;
+    LinearValueSmoother param5Coeff;
+    LinearValueSmoother param6Coeff;
+    LinearValueSmoother param7Coeff;
+    LinearValueSmoother param8Coeff;
+    LinearValueSmoother param9Coeff;
+    LinearValueSmoother param10Coeff;
     bool paramFirstRun;
 #endif
 };
@@ -202,6 +234,14 @@ public:
 #if AIDADSP_CONDITIONED_MODELS
     float *param1;
     float *param2;
+    float *param3;
+    float *param4;
+    float *param5;
+    float *param6;
+    float *param7;
+    float *param8;
+    float *param9;
+    float *param10;
 #endif
 #if AIDADSP_OPTIONAL_DCBLOCKER
     float *dc_blocker_param;
