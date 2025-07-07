@@ -39,7 +39,12 @@ for layer_type in layer_types:
             model_type = f'RTNeural::ModelT<float, {input_size}, 1, {rnn_layer_type}, {dense_layer_type}>'
             add_model(input_size, layer_type, hidden_size, model_type)
 
-with open("rt-neural-generic/src/model_variant.hpp", "w") as header_file:
+# Ensure output path matches the new plugin directory
+output_path = "rt-neural-x10/src/model_variant.hpp"
+import os
+os.makedirs(os.path.dirname(output_path), exist_ok=True)
+
+with open(output_path, "w") as header_file:
     header_file.write('#include <variant>\n')
     header_file.write('#include <RTNeural/RTNeural.h>\n')
     header_file.write('\n')

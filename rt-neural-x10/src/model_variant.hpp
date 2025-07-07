@@ -3094,4 +3094,86 @@ inline bool custom_model_creator (const nlohmann::json& model_json, ModelVariant
         model.emplace<ModelType_LSTM_64_2>();
         return true;
     }
-    else if (is_model_type_ModelType_LSTM_64_3 (model
+    else if (is_model_type_ModelType_LSTM_64_3 (model_json)) {
+        model.emplace<ModelType_LSTM_64_3>();
+        return true;
+    }
+    else if (is_model_type_ModelType_LSTM_64_4 (model_json)) {
+        model.emplace<ModelType_LSTM_64_4>();
+        return true;
+    }
+    else if (is_model_type_ModelType_LSTM_64_5 (model_json)) {
+        model.emplace<ModelType_LSTM_64_5>();
+        return true;
+    }
+    else if (is_model_type_ModelType_LSTM_64_6 (model_json)) {
+        model.emplace<ModelType_LSTM_64_6>();
+        return true;
+    }
+    else if (is_model_type_ModelType_LSTM_64_7 (model_json)) {
+        model.emplace<ModelType_LSTM_64_7>();
+        return true;
+    }
+    else if (is_model_type_ModelType_LSTM_64_8 (model_json)) {
+        model.emplace<ModelType_LSTM_64_8>();
+        return true;
+    }
+    else if (is_model_type_ModelType_LSTM_64_9 (model_json)) {
+        model.emplace<ModelType_LSTM_64_9>();
+        return true;
+    }
+    else if (is_model_type_ModelType_LSTM_64_10 (model_json)) {
+        model.emplace<ModelType_LSTM_64_10>();
+        return true;
+    }
+    else if (is_model_type_ModelType_LSTM_64_11 (model_json)) {
+        model.emplace<ModelType_LSTM_64_11>();
+        return true;
+    }
+    else if (is_model_type_ModelType_LSTM_80_1 (model_json)) {
+        model.emplace<ModelType_LSTM_80_1>();
+        return true;
+    }
+    else if (is_model_type_ModelType_LSTM_80_2 (model_json)) {
+        model.emplace<ModelType_LSTM_80_2>();
+        return true;
+    }
+    else if (is_model_type_ModelType_LSTM_80_3 (model_json)) {
+        model.emplace<ModelType_LSTM_80_3>();
+        return true;
+    }
+    else if (is_model_type_ModelType_LSTM_80_4 (model_json)) {
+        model.emplace<ModelType_LSTM_80_4>();
+        return true;
+    }
+    else if (is_model_type_ModelType_LSTM_80_5 (model_json)) {
+        model.emplace<ModelType_LSTM_80_5>();
+        return true;
+    }
+    else if (is_model_type_ModelType_LSTM_80_6 (model_json)) {
+        model.emplace<ModelType_LSTM_80_6>();
+        return true;
+    }
+    else if (is_model_type_ModelType_LSTM_80_7 (model_json)) {
+        model.emplace<ModelType_LSTM_80_7>();
+        return true;
+    }
+    else if (is_model_type_ModelType_LSTM_80_8 (model_json)) {
+        model.emplace<ModelType_LSTM_80_8>();
+        return true;
+    }
+    else if (is_model_type_ModelType_LSTM_80_9 (model_json)) {
+        model.emplace<ModelType_LSTM_80_9>();
+        return true;
+    }
+    else if (is_model_type_ModelType_LSTM_80_10 (model_json)) {
+        model.emplace<ModelType_LSTM_80_10>();
+        return true;
+    }
+    else if (is_model_type_ModelType_LSTM_80_11 (model_json)) {
+        model.emplace<ModelType_LSTM_80_11>();
+        return true;
+    }
+    model.emplace<NullModel>();
+    return false;
+}
