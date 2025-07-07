@@ -10,16 +10,17 @@
 
 ### Plugin list ###
 
-* rt-neural-generic.lv2
+* rt-neural-x10.lv2 (formerly rt-neural-generic.lv2)
 
-#### rt-neural-generic.lv2 ####
+#### rt-neural-x10.lv2 ####
 
-It's a lv2 plugin that leverages [RTNeural](https://github.com/jatinchowdhury18/RTNeural.git) to model
-pedals or amps.
+This plugin (display name "AIDA-X10", formerly "AIDA-X" for the `rt-neural-generic` version) is an LV2 plugin that uses the [RTNeural](https://github.com/jatinchowdhury18/RTNeural.git) library to load and run neural network models for real-time audio processing. This plugin is designed to be generic, allowing users to load different models trained for various audio effects, primarily focused on amp and pedal simulations. This version has been updated to support up to 10 conditioned parameters.
 
-- Play realistic Amps or Pedals captured with cutting-edge ML technology
-- Full featured 5-band EQ with adjustable Q, frequencies and pre/post switch
-- Input and Output Volume Controls
+Key Features:
+- **Dynamic Model Loading:** Supports loading different neural network models at runtime via JSON files.
+- **Parametric Models:** Can handle models with conditioning parameters (e.g., gain, tone stack) allowing real-time control over the model's response. Now supports up to 10 conditioned parameters.
+- **Built-in EQ and Filters:** Includes pre/post EQ, anti-aliasing filter, and DC blocker.
+- **MOD GUI Support:** Comes with a graphical user interface for MOD Devices.
 
 Developers:
 

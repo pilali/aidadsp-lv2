@@ -1,16 +1,16 @@
 @prefix modgui: <http://moddevices.com/ns/modgui#> .
 @prefix lv2:    <http://lv2plug.in/ns/lv2core#> .
 
-<http://aidadsp.cc/plugins/aidadsp-bundle/rt-neural-generic>
+<http://aidadsp.cc/plugins/aidadsp-bundle/rt-neural-x10>
     modgui:gui [
         modgui:resourcesDirectory <modgui> ;
-        modgui:iconTemplate <modgui/icon-rt-neural-generic.html> ;
-        modgui:javascript <modgui/javascript-rt-neural-generic.js> ;
-        modgui:stylesheet <modgui/stylesheet-rt-neural-generic.css> ;
-        modgui:screenshot <modgui/screenshot-rt-neural-generic.png> ;
-        modgui:thumbnail <modgui/thumbnail-rt-neural-generic.png> ;
+        modgui:iconTemplate <modgui/icon-rt-neural-x10.html> ;
+        modgui:javascript <modgui/javascript-rt-neural-x10.js> ;
+        modgui:stylesheet <modgui/stylesheet-rt-neural-x10.css> ;
+        modgui:screenshot <modgui/screenshot-rt-neural-x10.png> ;
+        modgui:thumbnail <modgui/thumbnail-rt-neural-x10.png> ;
         modgui:brand "Aida DSP" ;
-        modgui:label "rt-neural-gen" ;
+        modgui:label "rt-neural-x10" ;
         modgui:documentation <modgui/aida-x-manual.pdf> ;
         modgui:discussionURL <https://forum.mod.audio/t/aida-dsp-aida-x/9639> ;
         modgui:port [

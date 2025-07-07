@@ -24,7 +24,7 @@
 #include <lv2/parameters/parameters.h>
 
 #ifndef PLUGIN_URI
-#define PLUGIN_URI "http://aidadsp.cc/plugins/aidadsp-bundle/rt-neural-generic"
+#define PLUGIN_URI "http://aidadsp.cc/plugins/aidadsp-bundle/rt-neural-x10"
 #endif
 
 #define PLUGIN__json PLUGIN_URI "#json"

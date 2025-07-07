@@ -47,6 +47,9 @@
 
 #include "uris.h"
 
+// Update this URI for the renamed plugin
+#define PLUGIN_URI "http://aidadsp.cc/plugins/aidadsp-bundle/rt-neural-x10"
+
 #if AIDADSP_COMMERCIAL
     #define TWINCLASSIC 0
     #define LEAD 1
@@ -308,9 +311,9 @@ public:
                                        const void*                 data);
     static LV2_Worker_Status work_response(LV2_Handle instance, uint32_t size, const void* data);
 #if AIDADSP_MODEL_LOADER
-    static DynamicModel* loadModelFromPath(LV2_Log_Logger* logger, const char* path, int* input_size_ptr, const float old_param1, const float old_param2);
+    static DynamicModel* loadModelFromPath(LV2_Log_Logger* logger, const char* path, int* input_size_ptr, const float old_param1, const float old_param2, const float old_param3, const float old_param4, const float old_param5, const float old_param6, const float old_param7, const float old_param8, const float old_param9, const float old_param10);
 #else
-    static DynamicModel* loadModelFromIndex(LV2_Log_Logger* logger, int modelIndex, int* input_size_ptr, const float old_param1, const float old_param2);
+    static DynamicModel* loadModelFromIndex(LV2_Log_Logger* logger, int modelIndex, int* input_size_ptr, const float old_param1, const float old_param2, const float old_param3, const float old_param4, const float old_param5, const float old_param6, const float old_param7, const float old_param8, const float old_param9, const float old_param10);
     static float controlsToModelIndex(int modelIndex, const std::vector<float>& ctrls);
 #endif
     static void freeModel(DynamicModel* model);
@@ -363,4 +366,3 @@ private:
     static void applyToneControls(float *out, const float *in, LV2_Handle instance, uint32_t n_samples);
     static bool testModel(LV2_Log_Logger* logger, DynamicModel *model, const std::vector<float>& xData, const std::vector<float>& yData);
 };
-
