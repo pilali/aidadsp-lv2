@@ -1278,7 +1278,6 @@ LV2_Worker_Status RtNeuralGeneric::work(LV2_Handle instance,
 #endif
 #endif
 #endif
-#endif
 
     switch (msg->type)
     {
@@ -1303,7 +1302,6 @@ LV2_Worker_Status RtNeuralGeneric::work(LV2_Handle instance,
             param9 = self->model->param9Coeff.getTargetValue();
 #if AIDADSP_PARAMS >= 10
             param10 = self->model->param10Coeff.getTargetValue();
-#endif
 #endif
 #endif
 #endif
@@ -1588,7 +1586,6 @@ DynamicModel* RtNeuralGeneric::loadModelFromPath(LV2_Log_Logger* logger, const c
     model->param10Coeff.setTimeConstant(0.1f);
     model->param10Coeff.setTargetValue(old_param10);
     model->param10Coeff.clearToTargetValue();
-#endif
 #endif
 #endif
 #endif
