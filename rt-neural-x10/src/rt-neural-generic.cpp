@@ -1278,6 +1278,7 @@ LV2_Worker_Status RtNeuralGeneric::work(LV2_Handle instance,
 #endif
 #endif
 #endif
+#endif
 
     switch (msg->type)
     {
@@ -1302,21 +1303,21 @@ LV2_Worker_Status RtNeuralGeneric::work(LV2_Handle instance,
             param9 = self->model->param9Coeff.getTargetValue();
 #if AIDADSP_PARAMS >= 10
             param10 = self->model->param10Coeff.getTargetValue();
-#endif
-#endif
-#endif
-#endif
-#endif
-#endif
-#endif
-#endif
+#endif // AIDADSP_PARAMS >= 10
+#endif // AIDADSP_PARAMS >= 9
+#endif // AIDADSP_PARAMS >= 8
+#endif // AIDADSP_PARAMS >= 7
+#endif // AIDADSP_PARAMS >= 6
+#endif // AIDADSP_PARAMS >= 5
+#endif // AIDADSP_PARAMS >= 4
+#endif // AIDADSP_PARAMS >= 3
         }
-#endif
+#endif // AIDADSP_CONDITIONED_MODELS
 #if AIDADSP_MODEL_LOADER
         if (DynamicModel* newmodel = RtNeuralGeneric::loadModelFromPath(&self->logger, ((const WorkerLoadMessage*)data)->path, &self->last_input_size, param1, param2, param3, param4, param5, param6, param7, param8, param9, param10))
 #else
         if (DynamicModel* newmodel = RtNeuralGeneric::loadModelFromIndex(&self->logger, ((const WorkerLoadMessage*)data)->modelIndex, &self->last_input_size, param1, param2, param3, param4, param5, param6, param7, param8, param9, param10))
-#endif
+#endif // AIDADSP_MODEL_LOADER
         {
             WorkerApplyMessage reply = { kWorkerApply, newmodel };
             respond (handle, sizeof(reply), &reply);
@@ -1586,16 +1587,16 @@ DynamicModel* RtNeuralGeneric::loadModelFromPath(LV2_Log_Logger* logger, const c
     model->param10Coeff.setTimeConstant(0.1f);
     model->param10Coeff.setTargetValue(old_param10);
     model->param10Coeff.clearToTargetValue();
-#endif
-#endif
-#endif
-#endif
-#endif
-#endif
-#endif
-#endif
+#endif // AIDADSP_PARAMS >= 10
+#endif // AIDADSP_PARAMS >= 9
+#endif // AIDADSP_PARAMS >= 8
+#endif // AIDADSP_PARAMS >= 7
+#endif // AIDADSP_PARAMS >= 6
+#endif // AIDADSP_PARAMS >= 5
+#endif // AIDADSP_PARAMS >= 4
+#endif // AIDADSP_PARAMS >= 3
     model->paramFirstRun = true;
-#endif
+#endif // AIDADSP_CONDITIONED_MODELS
 
     /* Sanity check on inference engine with loaded model, also serves as pre-buffer
     * to avoid "clicks" during initialization */
